@@ -1,3 +1,26 @@
+fetch('../../assets/scripts/books.json')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    appendData(data);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+
+function appendData(data) {
+    var mainContainer = document.getElementById("card_div_x");
+    for (var i = 0; i < data.length; i++) {
+      var div = document.createElement("div");
+      div.innerHTML = data[i].author
+      mainContainer.appendChild(div);
+    }
+}
+
+alert(`Not finished yet, need few more days :)`)
+
+
 // // change the background color to red
 // document.body.style.background = "red";
 
@@ -13,6 +36,7 @@
 // div.innerHTML = "<strong>Hi there!</strong> You've read an important message."; // adding content to the new element
 
 // document.body.append(div); // adding new element in the HTML
+
 
 // Main DIV
 
@@ -30,7 +54,7 @@ welcome_p1.innerHTML = "Welcome to the amazing bookshop";
 main_inner_div.prepend(welcome_p1);
 
 const welcome_h1 = document.createElement(`h1`);
-welcome_h1.className = "welcome_txt";
+welcome_h1.className = "welcome_txt welcome_txt2";
 welcome_h1.innerHTML = "Magical Library";
 main_inner_div.append(welcome_h1);
 
@@ -46,15 +70,9 @@ const card_div = document.createElement(`div`);
 card_div.className = "card_div";
 catalog_div.after(card_div);
 
-// const cards_X = document.createElement(`div`);
-// cards_1.classList = "cards_X_1";
-
-
-
-
-
-
-
+const card_div_x = document.createElement(`div`);
+card_div_x.id = "card_div_x";
+card_div.append(card_div_x)
 
 
 
