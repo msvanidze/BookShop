@@ -35,6 +35,9 @@ body{
     line-height: 150px;
     font-family: Magic;
 }
+.welcome_txt2 {
+    text-decoration: underline;
+}
 .catalog_div {
     height: 150px;
     width: 100%;
