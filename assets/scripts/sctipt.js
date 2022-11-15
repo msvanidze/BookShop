@@ -1,4 +1,4 @@
-alert(`Not finished yet, need few more days :)`)
+alert(`Not finished yet, need few more Days :)`)
 
 
 // // change the background color to red
