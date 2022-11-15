@@ -18,7 +18,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     opacity: 0.7;
     display: flex;
     align-items: center;
@@ -43,12 +43,32 @@ body{
     width: 100%;
     background-color: #FAE5D3;
 }
-.card_div {
+#card_div_id {
     width: 100%;
     height: 850px;
     background-color: #FEF5E7;
-}
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    overflow: hidden;
 
+}
+#card_div_id div {
+    width: 18%;
+    height: 45%;
+    background-color: red;
+    margin: 10px auto;
+
+}
+#title_id, #author_id, #price_id {
+    margin: 0;
+    padding: 0;
+}
+#image_id {
+    height: 70%;
+
+}
 
 
 

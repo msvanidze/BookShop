@@ -1,23 +1,3 @@
-fetch('../../assets/scripts/books.json')
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    appendData(data);
-  })
-  .catch(function (err) {
-    console.log(err);
-  });
-
-function appendData(data) {
-    var mainContainer = document.getElementById("card_div_x");
-    for (var i = 0; i < data.length; i++) {
-      var div = document.createElement("div");
-      div.innerHTML = data[i].author
-      mainContainer.appendChild(div);
-    }
-}
-
 alert(`Not finished yet, need few more days :)`)
 
 
@@ -67,17 +47,48 @@ main_div.after(catalog_div);
 // CARD DIV
 
 const card_div = document.createElement(`div`);
-card_div.className = "card_div";
+card_div.id = "card_div_id";
 catalog_div.after(card_div);
 
-const card_div_x = document.createElement(`div`);
-card_div_x.id = "card_div_x";
-card_div.append(card_div_x)
+fetch('../../assets/scripts/books.json')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    appendData(data);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+
+function appendData(data) {
+    var mainContainer = document.getElementById("card_div_id");
+    for (var i = 0; i < data.length; i++) {
+      var div = document.createElement("div");
+      var author_p = document.createElement("p");
+      var image_link = document.createElement("img");
+      var title = document.createElement("h2");
+      var price = document.createElement("p");
+
+      div.appendChild(image_link);
+      image_link.after(title);
+      title.after(author_p);
+      author_p.after(price);
+
+      image_link.src = data[i].imageLink;
+      title.innerHTML = data[i].title;
+      author_p.innerHTML = data[i].author;
+      price.innerHTML = data[i].price + ` $`;
+
+      image_link.id = "image_id";
+      title.id = "title_id";
+      author_p.id = "author_id";
+      price.id = "price_id";
 
 
-
-
-
+      mainContainer.appendChild(div);
+    }
+}
 
 
 
