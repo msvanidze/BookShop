@@ -64,14 +64,18 @@ fetch('../../assets/scripts/books.json')
 function appendData(data) {
     var mainContainer = document.getElementById("card_div_id");
     for (var i = 0; i < data.length; i++) {
+
       var div = document.createElement("div");
-      var author_p = document.createElement("p");
+
+      var image_link_div = document.createElement("div")
       var image_link = document.createElement("img");
       var title = document.createElement("h2");
+      var author_p = document.createElement("p");
       var price = document.createElement("p");
 
-      div.appendChild(image_link);
-      image_link.after(title);
+      div.appendChild(image_link_div)
+      image_link_div.appendChild(image_link);
+      image_link_div.after(title);
       title.after(author_p);
       author_p.after(price);
 
@@ -80,6 +84,8 @@ function appendData(data) {
       author_p.innerHTML = data[i].author;
       price.innerHTML = data[i].price + ` $`;
 
+      div.id = "card_div_id_inner";
+      image_link_div.id = "image_link_div";
       image_link.id = "image_id";
       title.id = "title_id";
       author_p.id = "author_id";
