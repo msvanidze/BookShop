@@ -79,28 +79,31 @@ function appendData(data) {
     for (var i = 0; i < data.length; i++) {
 
       var div = document.createElement("div");
-
       var image_link_div = document.createElement("div")
       var image_link = document.createElement("img");
       var image_info = document.createElement("div");
       var image_info_content = document.createElement("p");
+      var image_info_button = document.createElement("input");
       var bottom_div = document.createElement("div")
       var title = document.createElement("h2");
       var author_p = document.createElement("p");
       var price_cart_div = document.createElement("div")
       var price = document.createElement("p");
       var cart = document.createElement("input")
+      var about_info = document.createElement("input")
 
       div.appendChild(image_link_div)
       image_link_div.appendChild(image_link);
       image_link.after(image_info);
       image_info.appendChild(image_info_content);
       image_link_div.after(bottom_div);
+      image_info_content.after(image_info_button);
       bottom_div.appendChild(author_p);
       author_p.after(title);
       title.after(price_cart_div);
       price_cart_div.appendChild(price);
-      price.after(cart);
+      price.after(about_info);
+      about_info.after(cart);
 
       image_link.src = data[i].imageLink;
       title.innerHTML = data[i].title;
@@ -117,9 +120,16 @@ function appendData(data) {
       author_p.id = "author_id";
       price_cart_div.id = "price_cat_div";
       price.id = "price_id";
+      about_info.id = "about_info";
+      about_info.type = "submit";
+      about_info.value = "Show more";
       cart.id = "cart";
       cart.type = "submit";
       cart.value = "Add to Cart"
+      image_info_button.id = "image_info_button";
+      image_info_button.type = "submit"
+      image_info_button.value = "Close"
+
       mainContainer.appendChild(div);
     }
 }
