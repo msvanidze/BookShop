@@ -82,6 +82,8 @@ function appendData(data) {
 
       var image_link_div = document.createElement("div")
       var image_link = document.createElement("img");
+      var image_info = document.createElement("div");
+      var image_info_content = document.createElement("p");
       var bottom_div = document.createElement("div")
       var title = document.createElement("h2");
       var author_p = document.createElement("p");
@@ -91,6 +93,8 @@ function appendData(data) {
 
       div.appendChild(image_link_div)
       image_link_div.appendChild(image_link);
+      image_link.after(image_info);
+      image_info.appendChild(image_info_content);
       image_link_div.after(bottom_div);
       bottom_div.appendChild(author_p);
       author_p.after(title);
@@ -102,10 +106,12 @@ function appendData(data) {
       title.innerHTML = data[i].title;
       author_p.innerHTML = data[i].author;
       price.innerHTML = data[i].price + ` $`;
+      image_info_content.innerHTML = data[i].description;
 
       div.id = "card_div_id_inner";
       image_link_div.id = "image_link_div";
       image_link.id = "image_id";
+      image_info.id = "image_info";
       bottom_div.id = "bottom_div";
       title.id = "title_id";
       author_p.id = "author_id";
