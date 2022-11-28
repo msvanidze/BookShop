@@ -60,9 +60,11 @@ catalog_div_right.className = "catalog_div_both catalog_div_right";
 catalog_div_cart.className = "catalog_div_cart";
 catalog_div_cart_top.className = "catalog_div_cart_top";
 catalog_div_cart_middle.className = "catalog_div_cart_middle";
+catalog_div_cart_middle.id = "catalog_div_cart_middle_ID";
 catalog_div_cart_bottom.className = "catalog_div_cart_bottom";
 catalog_div_cart_top_p1.className = "catalog_div_cart_top_p1";
 catalog_div_cart_top_p2.className = "catalog_div_cart_top_p2";
+catalog_div_cart_top_p2.id = "catalog_div_cart_top_p2_ID";
 catalog_div_cart_top_close_btn.className = "catalog_div_cart_top_close_btn";
 catalog_div_cart_bottom_button1.className = "catalog_div_cart_bottom_button1";
 catalog_div_cart_bottom_button2.className = "catalog_div_cart_bottom_button2";
@@ -82,7 +84,7 @@ catalog_div_cart_bottom.appendChild(catalog_div_cart_bottom_button1);
 catalog_div_cart_bottom_button1.after(catalog_div_cart_bottom_button2);
 
 catalog_div_cart_top_p1.innerHTML = "Total:";
-catalog_div_cart_top_p2.innerHTML = "1" + " $";
+catalog_div_cart_top_p2.innerHTML = "0" + " $";
 
 catalog_div_cart_top_close_btn.type = "submit";
 catalog_div_cart_top_close_btn.value = "X";
@@ -168,6 +170,7 @@ fetch('../../assets/scripts/books.json')
       author_p.id = "author_id";
       price_cart_div.id = "price_cat_div";
       price.id = "price_id";
+      price.className = "price_class"
 
       about_info.id = "about_info";
       about_info.type = "submit";
@@ -186,6 +189,69 @@ fetch('../../assets/scripts/books.json')
       image_info_button.addEventListener("click", function() {
         image_info.style.display = "none";
       });
+
+// Adding to the cart
+
+      cart.onclick = function() {
+        const catalog_div_cart_New_Item = document.createElement("div");
+        catalog_div_cart_New_Item.className = "catalog_div_cart_New_Item";
+
+        const catalog_div_cart_New_Item_img = document.createElement("img");
+        catalog_div_cart_New_Item_img.src = `${book.imageLink}`;
+        catalog_div_cart_New_Item_img.className = "catalog_div_cart_New_Item_img";
+        catalog_div_cart_New_Item.appendChild(catalog_div_cart_New_Item_img);
+
+        const catalog_div_cart_New_Item_title = document.createElement("p");
+        catalog_div_cart_New_Item_title.innerHTML = `${book.title}`;
+        catalog_div_cart_New_Item_title.className = "catalog_div_cart_New_Item_title";
+        catalog_div_cart_New_Item.appendChild(catalog_div_cart_New_Item_title);
+
+        const catalog_div_cart_New_Item_price = document.createElement("p");
+        catalog_div_cart_New_Item_price.className = "catalog_div_cart_New_Item_price";
+        catalog_div_cart_New_Item_price.innerHTML = `${book.price}` + "$";
+        catalog_div_cart_New_Item.appendChild(catalog_div_cart_New_Item_price);
+
+        const catalog_div_cart_New_Item_delete = document.createElement("button");
+        catalog_div_cart_New_Item_delete.innerHTML = "&times;";
+        catalog_div_cart_New_Item_delete.className = "catalog_div_cart_New_Item_delete";
+        catalog_div_cart_New_Item.appendChild(catalog_div_cart_New_Item_delete);
+
+        const total = document.getElementsByClassName("price_class");
+        total.innerHTML = catalog_div_cart_New_Item.length;
+        const cartAppend = document.getElementById("catalog_div_cart_middle_ID");
+        cartAppend.append(catalog_div_cart_New_Item);
+
+        const price_class = document.getElementsByClassName("price_class");
+        price_class.innerHTML = cartAppend.childNodes.length;
+        price_class.style.color = "red";
+
+        const total_price = document.getElementById("catalog_div_cart_top_p2_ID");
+        total_price.innerHTML = parseInt(total_price.innerHTML) + Number.parseInt(book.price) + "$";
+
+        catalog_div_cart_New_Item_delete.onclick = function (){
+          catalog_div_cart_New_Item_delete.closest("div").remove();
+          price_class.innerHTML = cartAppend.childNodes.length;
+          price_class.style.color = "red";
+          total_price.innerHTML = `${parseInt(total_price.innerHTML) - Number.parseInt(book.price)}\$`;
+            if (price_class.innerHTML == 0) {
+              price_class.style.color = "#8A8A8A";
+            }
+        }
+
+        const clearBtn = document.getElementById("clearBtn");
+        clearBtn.onclick = function() {
+            cartAppend.innerHTML = "";
+            total_price.innerHTML = 0 + "$";
+            price_class.innerHTML = 0;
+            price_class.style.color = "#8A8A8A";
+        }
+    }
+
+
+
+
+
+
 
       mainContainer.appendChild(div);
     })

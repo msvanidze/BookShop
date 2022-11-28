@@ -183,7 +183,7 @@ body{
     border: 1px solid white;
     border-radius: 1px;
     padding: 5px;
-   visibility: hidden;
+    visibility: hidden;
 }
 .catalog_div_cart_top {
     height: 20px;
@@ -233,9 +233,10 @@ body{
     right: 5px;
     cursor: pointer;
 }
-
-
-
+.catalog_div_cart_New_Item_img {
+    height: 100px;
+    width: 30%;
+}
 .footer_div {
     display: flex;
     align-items: center;
