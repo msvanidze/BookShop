@@ -131,8 +131,10 @@ fetch('../../assets/scripts/books.json')
       id++;
       var mainContainer = document.getElementById("card_div_id");
       var div = document.createElement("div");
+      div.draggable = true;
       var image_link_div = document.createElement("div")
       var image_link = document.createElement("img");
+      image_link.draggable = false;
       var image_info = document.createElement("div");
       var image_info_content = document.createElement("p");
       var image_info_button = document.createElement("input");
@@ -194,7 +196,9 @@ fetch('../../assets/scripts/books.json')
 
 // Adding to the cart
 
-      cart.onclick = function() {
+      cart.addEventListener("click", addcart);
+
+      function addcart() {
 
         const catalog_div_cart_New_Item = document.createElement("div");
         catalog_div_cart_New_Item.className = "catalog_div_cart_New_Item";
@@ -242,6 +246,17 @@ fetch('../../assets/scripts/books.json')
             price_class.innerHTML = 0;
         }
     }
+
+
+    div.addEventListener("dragstart", function(){
+      catalog_div_cart.style.visibility = "visible";
+  })
+
+    div.addEventListener("dragend", function(){
+      addcart();
+  })
+
+
       mainContainer.appendChild(div);
     })
 })

@@ -162,6 +162,7 @@ body{
     box-sizing: border-box;
     font-size: 14px;
     display: none;
+    opacity: 0.95;
 }
 #image_info_content {
     margin: 0;
@@ -185,6 +186,7 @@ body{
     padding: 5px;
     visibility: hidden;
     overflow: hidden;
+    opacity: 0.95;
 }
 .catalog_div_cart_top {
     height: 20px;
