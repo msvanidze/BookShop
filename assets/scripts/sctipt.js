@@ -1,4 +1,4 @@
-// alert(`Will finish in 3 hours :)`)
+alert(`Will finish in 3 hours :)`)
 
 
 // // change the background color to red
