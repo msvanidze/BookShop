@@ -68,6 +68,7 @@ catalog_div_cart_top_p2.id = "catalog_div_cart_top_p2_ID";
 catalog_div_cart_top_close_btn.className = "catalog_div_cart_top_close_btn";
 catalog_div_cart_bottom_button1.className = "catalog_div_cart_bottom_button1";
 catalog_div_cart_bottom_button2.className = "catalog_div_cart_bottom_button2";
+catalog_div_cart_bottom_button2.id = "catalog_div_cart_bottom_button2_ID";
 
 
 main_div.after(catalog_div);
@@ -193,6 +194,7 @@ fetch('../../assets/scripts/books.json')
 // Adding to the cart
 
       cart.onclick = function() {
+
         const catalog_div_cart_New_Item = document.createElement("div");
         catalog_div_cart_New_Item.className = "catalog_div_cart_New_Item";
 
@@ -221,9 +223,9 @@ fetch('../../assets/scripts/books.json')
         const cartAppend = document.getElementById("catalog_div_cart_middle_ID");
         cartAppend.append(catalog_div_cart_New_Item);
 
-        const price_class = document.getElementsByClassName("price_class");
-        price_class.innerHTML = cartAppend.childNodes.length;
-        price_class.style.color = "red";
+        // const price_class = document.getElementById("catalog_div_cart_top_p2_ID");
+        // price_class.innerHTML = cartAppend.childNodes.length;
+        // price_class.style.color = "red";
 
         const total_price = document.getElementById("catalog_div_cart_top_p2_ID");
         total_price.innerHTML = parseInt(total_price.innerHTML) + Number.parseInt(book.price) + "$";
@@ -233,17 +235,17 @@ fetch('../../assets/scripts/books.json')
           price_class.innerHTML = cartAppend.childNodes.length;
           price_class.style.color = "red";
           total_price.innerHTML = `${parseInt(total_price.innerHTML) - Number.parseInt(book.price)}\$`;
-            if (price_class.innerHTML == 0) {
-              price_class.style.color = "#8A8A8A";
-            }
+            // if (price_class.innerHTML == 0) {
+            //   price_class.style.color = "#8A8A8A";
+            // }
         }
 
-        const clearBtn = document.getElementById("clearBtn");
-        clearBtn.onclick = function() {
+        const catalog_div_cart_bottom_button2_ID = document.getElementById("catalog_div_cart_bottom_button2_ID");
+        catalog_div_cart_bottom_button2_ID.onclick = function() {
             cartAppend.innerHTML = "";
             total_price.innerHTML = 0 + "$";
             price_class.innerHTML = 0;
-            price_class.style.color = "#8A8A8A";
+            // price_class.style.color = "#8A8A8A";
         }
     }
 
