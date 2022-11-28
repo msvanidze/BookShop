@@ -1,4 +1,4 @@
-alert(`Will finish in 1 hours :)`)
+// alert(`Will finish in 1 hours :)`)
 
 
 // // change the background color to red
@@ -57,6 +57,7 @@ const catalog_div_cart_bottom_button2 = document.createElement(`input`);
 catalog_div.className = "catalog_div";
 catalog_div_left.className = "catalog_div_both catalog_div_left";
 catalog_div_right.className = "catalog_div_both catalog_div_right";
+catalog_div_right.id = "catalog_div_right_ID"
 catalog_div_cart.className = "catalog_div_cart";
 catalog_div_cart_top.className = "catalog_div_cart_top";
 catalog_div_cart_middle.className = "catalog_div_cart_middle";
@@ -223,21 +224,15 @@ fetch('../../assets/scripts/books.json')
         const cartAppend = document.getElementById("catalog_div_cart_middle_ID");
         cartAppend.append(catalog_div_cart_New_Item);
 
-        // const price_class = document.getElementById("catalog_div_cart_top_p2_ID");
-        // price_class.innerHTML = cartAppend.childNodes.length;
-        // price_class.style.color = "red";
+        const cartP = document.getElementById("catalog_div_right_ID");
+        cartP.innerHTML = `Your Cart `+ cartAppend.childNodes.length;
 
         const total_price = document.getElementById("catalog_div_cart_top_p2_ID");
         total_price.innerHTML = parseInt(total_price.innerHTML) + Number.parseInt(book.price) + "$";
 
         catalog_div_cart_New_Item_delete.onclick = function (){
           catalog_div_cart_New_Item_delete.closest("div").remove();
-          // price_class.innerHTML = cartAppend.childNodes.length;
-          // price_class.style.color = "red";
           total_price.innerHTML = `${parseInt(total_price.innerHTML) - Number.parseInt(book.price)}\$`;
-            // if (price_class.innerHTML == 0) {
-            //   price_class.style.color = "#8A8A8A";
-            // }
         }
 
         const catalog_div_cart_bottom_button2_ID = document.getElementById("catalog_div_cart_bottom_button2_ID");
@@ -245,22 +240,10 @@ fetch('../../assets/scripts/books.json')
             cartAppend.innerHTML = "";
             total_price.innerHTML = 0 + "$";
             price_class.innerHTML = 0;
-            // price_class.style.color = "#8A8A8A";
         }
     }
-
-
-
-
-
-
-
       mainContainer.appendChild(div);
     })
-
-
-
-
 })
 
 // FOOTER DIV
