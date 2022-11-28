@@ -43,18 +43,67 @@ main_inner_div.append(welcome_h1);
 const catalog_div = document.createElement(`div`);
 const catalog_div_left = document.createElement(`p`);
 const catalog_div_right = document.createElement(`p`);
+const catalog_div_cart = document.createElement(`div`);
+const catalog_div_cart_top = document.createElement(`div`);
+const catalog_div_cart_middle = document.createElement(`div`);
+const catalog_div_cart_bottom = document.createElement(`div`);
+const catalog_div_cart_top_p1 = document.createElement(`p`);
+const catalog_div_cart_top_p2 = document.createElement(`p`);
+const catalog_div_cart_top_close_btn = document.createElement(`input`);
+const catalog_div_cart_bottom_button1 = document.createElement(`input`);
+const catalog_div_cart_bottom_button2 = document.createElement(`input`);
+
 
 catalog_div.className = "catalog_div";
 catalog_div_left.className = "catalog_div_both catalog_div_left";
-catalog_div_right.className = "catalog_div_both catalog_div_right"
+catalog_div_right.className = "catalog_div_both catalog_div_right";
+catalog_div_cart.className = "catalog_div_cart";
+catalog_div_cart_top.className = "catalog_div_cart_top";
+catalog_div_cart_middle.className = "catalog_div_cart_middle";
+catalog_div_cart_bottom.className = "catalog_div_cart_bottom";
+catalog_div_cart_top_p1.className = "catalog_div_cart_top_p1";
+catalog_div_cart_top_p2.className = "catalog_div_cart_top_p2";
+catalog_div_cart_top_close_btn.className = "catalog_div_cart_top_close_btn";
+catalog_div_cart_bottom_button1.className = "catalog_div_cart_bottom_button1";
+catalog_div_cart_bottom_button2.className = "catalog_div_cart_bottom_button2";
+
 
 main_div.after(catalog_div);
 catalog_div.appendChild(catalog_div_left);
 catalog_div_left.after(catalog_div_right);
+catalog_div_right.after(catalog_div_cart)
+catalog_div_cart.appendChild(catalog_div_cart_top);
+catalog_div_cart_top.after(catalog_div_cart_middle);
+catalog_div_cart_middle.after(catalog_div_cart_bottom);
+catalog_div_cart_top.appendChild(catalog_div_cart_top_p1);
+catalog_div_cart_top_p1.after(catalog_div_cart_top_p2);
+catalog_div_cart_top_p2.after(catalog_div_cart_top_close_btn);
+catalog_div_cart_bottom.appendChild(catalog_div_cart_bottom_button1);
+catalog_div_cart_bottom_button1.after(catalog_div_cart_bottom_button2);
+
+catalog_div_cart_top_p1.innerHTML = "Total:";
+catalog_div_cart_top_p2.innerHTML = "1" + " $";
+
+catalog_div_cart_top_close_btn.type = "submit";
+catalog_div_cart_top_close_btn.value = "X";
+
+catalog_div_cart_bottom_button1.type = "submit";
+catalog_div_cart_bottom_button2.type = "submit";
+
+catalog_div_cart_bottom_button1.value = "Comfirm Order";
+catalog_div_cart_bottom_button2.value = "Clear";
 
 catalog_div_left.innerHTML = `Book Catalogue`;
 catalog_div_right.innerHTML = `Your Cart ` + `0`;
 
+
+
+catalog_div_right.addEventListener("click", function() {
+  catalog_div_cart.style.visibility = "visible";
+})
+catalog_div_cart_top_close_btn.addEventListener("click", function() {
+  catalog_div_cart.style.visibility = "hidden";
+})
 
 
 // CARD DIV
@@ -74,9 +123,7 @@ fetch('../../assets/scripts/books.json')
   books.map(book => {
 
       id++;
-
       var mainContainer = document.getElementById("card_div_id");
-
       var div = document.createElement("div");
       var image_link_div = document.createElement("div")
       var image_link = document.createElement("img");
@@ -130,8 +177,6 @@ fetch('../../assets/scripts/books.json')
       image_info_button.type = "submit"
       image_info_button.value = "Close"
 
-
-
       about_info.addEventListener("click",function() {
         image_info.style.display = "block";
       });
@@ -140,7 +185,6 @@ fetch('../../assets/scripts/books.json')
         image_info.style.display = "none";
       });
 
-
       mainContainer.appendChild(div);
     })
 
@@ -148,16 +192,6 @@ fetch('../../assets/scripts/books.json')
 
 
 })
-
-
-
-
-
-
-
-
-
-
 
 // FOOTER DIV
 
