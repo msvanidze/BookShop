@@ -1,4 +1,4 @@
-alert(`Not finished yet, need few more Days :)`)
+alert(`Will finish in 3 hours :)`)
 
 
 // // change the background color to red
@@ -64,19 +64,18 @@ card_div.id = "card_div_id";
 catalog_div.after(card_div);
 
 fetch('../../assets/scripts/books.json')
-  .then(function (response) {
+  .then(response => {
     return response.json();
-  })
-  .then(function (data) {
-    appendData(data);
-  })
-  .catch(function (err) {
-    console.log(err);
-  });
+})
+  .then(data => {
+    let books = data;
+    let id = 0;
 
-function appendData(data) {
-    var mainContainer = document.getElementById("card_div_id");
-    for (var i = 0; i < data.length; i++) {
+  books.map(book => {
+
+      id++;
+
+      var mainContainer = document.getElementById("card_div_id");
 
       var div = document.createElement("div");
       var image_link_div = document.createElement("div")
@@ -105,11 +104,11 @@ function appendData(data) {
       price.after(about_info);
       about_info.after(cart);
 
-      image_link.src = data[i].imageLink;
-      title.innerHTML = data[i].title;
-      author_p.innerHTML = data[i].author;
-      price.innerHTML = data[i].price + ` $`;
-      image_info_content.innerHTML = data[i].description;
+      image_link.src = book.imageLink;
+      title.innerHTML = book.title;
+      author_p.innerHTML = book.author;
+      price.innerHTML = book.price + ` $`;
+      image_info_content.innerHTML = book.description;
 
       div.id = "card_div_id_inner";
       image_link_div.id = "image_link_div";
@@ -120,6 +119,7 @@ function appendData(data) {
       author_p.id = "author_id";
       price_cart_div.id = "price_cat_div";
       price.id = "price_id";
+
       about_info.id = "about_info";
       about_info.type = "submit";
       about_info.value = "Show more";
@@ -130,9 +130,34 @@ function appendData(data) {
       image_info_button.type = "submit"
       image_info_button.value = "Close"
 
+
+
+      about_info.addEventListener("click",function() {
+        image_info.style.display = "block";
+      });
+
+      image_info_button.addEventListener("click", function() {
+        image_info.style.display = "none";
+      });
+
+
       mainContainer.appendChild(div);
-    }
-}
+    })
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
 
 // FOOTER DIV
 
