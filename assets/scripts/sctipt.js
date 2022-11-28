@@ -1,4 +1,4 @@
-alert(`Will finish in 3 hours :)`)
+alert(`Will finish in 1 hours :)`)
 
 
 // // change the background color to red
@@ -232,8 +232,8 @@ fetch('../../assets/scripts/books.json')
 
         catalog_div_cart_New_Item_delete.onclick = function (){
           catalog_div_cart_New_Item_delete.closest("div").remove();
-          price_class.innerHTML = cartAppend.childNodes.length;
-          price_class.style.color = "red";
+          // price_class.innerHTML = cartAppend.childNodes.length;
+          // price_class.style.color = "red";
           total_price.innerHTML = `${parseInt(total_price.innerHTML) - Number.parseInt(book.price)}\$`;
             // if (price_class.innerHTML == 0) {
             //   price_class.style.color = "#8A8A8A";
