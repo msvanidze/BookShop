@@ -158,25 +158,15 @@ body{
     border: 1px solid #9B4802;
     border-radius: 1px;
     background-color: white;
-    opacity: 0;
     padding:  0 10px 0 10px;
     box-sizing: border-box;
     font-size: 14px;
+    display: none;
 }
 #image_info_content {
     margin: 0;
     padding: 0;
 }
-
-
-
-
-#image_info:hover {
-    opacity: 0.9;
-    cursor: help;
-}
-
-
 
 
 
