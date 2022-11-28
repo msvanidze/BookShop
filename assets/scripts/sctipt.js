@@ -104,7 +104,9 @@ catalog_div_right.addEventListener("click", function() {
 catalog_div_cart_top_close_btn.addEventListener("click", function() {
   catalog_div_cart.style.visibility = "hidden";
 })
-
+catalog_div_cart_bottom_button1.addEventListener("click", function() {
+  window.location.href = '../../pages/delivery/index.html';
+})
 
 // CARD DIV
 
